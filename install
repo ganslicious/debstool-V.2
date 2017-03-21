@@ -1,0 +1,104 @@
+#!/bin/bash
+##########################################
+# coded by : ganda-guwe-pansakom         #
+##########################################
+#~	DebsTool - Debian Server Tools  ~#
+#~	Easy Configuration Debian Server~#
+#~	Make Fast Your Work~ 		~#
+#~	INDONESIAN LINUX CODE SECURITY	~#
+#-----------------guwe.pro---------------#
+
+m="\033[1;31m"
+k="\033[1;33m"
+h="\033[1;32m"
+b="\033[1;34m"
+n="\033[0m"
+
+a_load(){
+{
+for (( i = $2 ; i <= $3 ; i++ )); do
+	sleep 0.1
+	echo "$i"
+done
+ } | whiptail --title "[+] DEBSETOOL - Debian Server Tools [+]" --gauge "$1" 10 40 0
+}
+sleep 2
+a_license(){
+ whiptail --textbox LICENSE.txt --scrolltext --title "DEBSETOOL - General Public License v3" 30 80 0
+a_main
+}
+a_uninstall(){
+	which debsetool > /dev/null 2>&1
+if [[ "$?" -eq "0" ]]; then
+	a_load "[+] Uninstall debsetool ..." 1 10
+	rm -rf /opt/debsetool
+	a_load "[+] Removing '/opt/debsetool' ...." 10 30
+	rm /usr/bin/debsetool
+	a_load "[+] Removing '/usr/bin/debsetool' ..." 30 60
+	a_load "[+] Cleaning ..." 60 70
+	rm -rf /etc/debsetool
+	rmdir /etc/debsetool
+	a_load "[+] Fininshing .." 70 10
+	whiptail --title "[+] UNINSTALL FINISHED [+]" --msgbox "[!] UNINSTALL FINISHED [!] " 10 40 0
+else
+	whiptail --title "[+] debsetool not Installed [+]" --msgbox "[!] DebsTool not Installed,so? can't Uninstall.." 10 40 0
+fi	
+}
+a_install(){
+	a_load "[+] Installing debsetool ..." 1 10
+	mkdir -p /opt/debsetool > /dev/null 2>&1
+	mkdir -p /etc/debsetool > /dev/null 2>&1
+	a_load "[+] Craating Directory '/opt/debsetool ..' " 10 20
+	cp debsetool.sh /opt/debsetool/ > /dev/null 2>&1
+	a_load "[+] Copying debsetool.sh to '/opt/debsetool' .." 20 40
+	cp autorun.sh /usr/bin/debsetool > /dev/null 2>&1
+	a_load "[+] Craating autorun ..." 40 60
+	chmod 755 -R /opt/debsetool > /dev/null 2>&1
+	chmod +x /usr/bin/debsetool > /dev/null 2>&1
+	a_load "[+] Change permission ..." 60 70
+	cp * /opt/debsetool > /dev/null 2>&1
+	cp debsetool-user.conf /etc/debsetool > /dev/null 2>&1
+	a_load "[+] Fininshing Installation ..." 70 100
+	whiptail --title "[+] INSTALLATION FINISHED [+]" --msgbox "[!] INSTALLATION FINISHED [!] " 10 40 0
+}
+a_about(){
+whiptail --textbox about.txt --scrolltext --title "DEBSETOOL - General Public License v3" 30 80 0
+a_main
+}
+a_user(){
+user=$(whiptail --title "[+] DEBSETOOL - Debian Server Tools [+]" --inputbox "USERNAME :" 10 40 3>&1 1>&2 2>&3 3>&1 )
+pass=$(whiptail --title "[+] DEBSETOOL - Debian Server Tools [+]" --passwordbox "PASSWORD :" 10 40 3>&1 1>&2 2>&3 3>&1 )
+email=$(whiptail --title "[+] DEBSETOOL - Debian Server Tools [+]" --inputbox "YOUR EMAIL :" 10 40 3>&1 1>&2 2>&3 3>&1 )
+whiptail --msgbox "Your Name : $user \n Your Pass : ******* h3h3h3 \n Your Email : $email " --title "[+] DEBSETOOL - Debian Server Tools [+]" 10 40
+touch debsetool-user.conf
+echo \# Debian Server Tool User Info >> debsetool-user.conf
+echo "USERNAME="$user >> debsetool-user.conf
+echo \#--------------------------------------- >> debsetool-user.conf
+echo "PASSWORD="$pass >> debsetool-user.conf
+echo \#--------------------------------------- >> debsetool-user.conf
+echo "EMAIL="$email >> debsetool-user.conf
+echo \#--------------------------------------- >> debsetool-user.conf
+echo \# Thx : Rizky - Umam - Ferdi - Ravi - Amin - Alinko >> debsetool-user.conf
+}
+a_main(){
+pil=$(whiptail --menu "[+] What Do You Want [?]" 10 40 0 \
+Install debsetool \
+Uninstall debsetool \
+Read License \
+About us \
+3>&1 1>&2 2>&3 3>&1 
+)
+clear
+if [[ $pil == "Install" ]]; then
+	a_install
+elif [[ $pil == "Uninstall" ]]; then
+	a_uninstall
+elif [[ $pil == "About" ]]; then
+	a_about
+elif [[ $pil == "Read" ]]; then
+	a_license
+fi
+}
+a_load " @ WAITING FOR YOU @ \n \n For Install This Appplication You Must Register ;) \n" 1 100
+a_user
+a_main
