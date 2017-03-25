@@ -12,7 +12,7 @@ So? itu semua tergantung manusia nya~
 -------------------------------------------------------------------------------------------------------
 # Installation
 <pre>
-root@guwe.pro:~# git clone https://github.com/alintamvanz/debsetool.git
+root@guwe.pro:~# git clone https://github.com/ganslicious/debstool-V.2.git
 root@guwe.pro:~# chmod 755 -R debsetool
 root@guwe.pro:~# cd debsetool
 root@guwe.pro:~/debsetool #./install 
