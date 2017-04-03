@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##############################################
-# coded by : ganda - guwe.pro pansakom       #
+# coded by : ganda - guwe.pro shutdownz      #
 ##############################################
 #~	DebsTool - Debian Server Tools      ~#
 #~	Easy Configuration Debian Server    ~#
@@ -728,7 +728,7 @@ echo -e $n"           /  ************  \        /  ************  \    "
 echo -e $n"          --------------------      --------------------   "
 echo -e $n"         +-----------------------------------------------+ "
 echo -e $n"         |     -[$m Debian Server "$n"|    $b Auto Tools$n ]-  |"
-echo -e $n"         |      $m  Author   :$k Ganda || guwePRO || pansakom$n|"
+echo -e $n"         |      $m  Author   :$k Ganda || guwe.PRO || shutdownz$n|"
 echo -e $n"         |      $m  Version  :$k 2.0 IDLICOS  $n               |"
 echo -e $n"         |      $m Codename  :$k PEMALAS  $n                   |"
 echo -e $n"         |$b   guwe.pro -$h Learn Linux And Develops  $n   |"
