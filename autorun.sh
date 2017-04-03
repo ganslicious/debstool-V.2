@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##########################################
-# Coded : ganda-guwePRO-pansakom         #
+# Coded : ganda-guwePRO-shutdownz        #
 ##########################################
 #~	DebsTool - Debian Server Tools  ~#
 #~	Easy Configuration Debian Server~#
